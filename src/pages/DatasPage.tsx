@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import{SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native';
 
 import colors from '../styles/colors';
@@ -6,9 +6,33 @@ import fonts from '../styles/fonts';
 
 import {Buttom} from '../components/Buttom';
 
+
 export function DatasPage(){
+
+    const [name, setName] = useState(false);
+    const [business, setBusiness] = useState(false);
+    const [email, setEmail] = useState(false);
+    const [container, setContainer] = useState(false);
+
+
+    function handleColorName(){
+        setName(!name)
+        setContainer(!container)
+    }
+   
+    function handleColorBusiness(){
+        setBusiness(!business)
+        setContainer(!container)  
+       
+    }
+    function handleColorEmail(){
+        setEmail(!email)
+        setContainer(!container)
+       
+    }
+
     return(
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={container ? styles.containerBusinessEmail : styles.container}>
             <View style={styles.header}>
                 <Text style={styles.title}>
                     Fina<Text style={styles.fina}>Toque</Text>
@@ -18,17 +42,23 @@ export function DatasPage(){
             <View style={styles.inputsContainer}>
                 <Text style={styles.label}>Nome:</Text>
                 <TextInput
-                    style={styles.inputs}
+                    style={name ? styles.inputsActive : styles.inputs}
+                    onFocus={handleColorName}
+                    onBlur={handleColorName}
                 />
 
                 <Text style={styles.label}>Nome do seu Negócio:</Text>
                 <TextInput
-                    style={styles.inputs}
+                    style={business ? styles.inputsActive : styles.inputs}
+                    onFocus={handleColorBusiness}
+                    onBlur={handleColorBusiness}
                 />
 
                 <Text style={styles.label}>E-mail:</Text>
                 <TextInput
-                    style={styles.inputs}
+                     style={email ? styles.inputsActive : styles.inputs}
+                     onFocus={handleColorEmail}
+                     onBlur={handleColorEmail}
                 />
             </View>
 
@@ -45,8 +75,15 @@ export function DatasPage(){
 const styles = StyleSheet.create({
     container:{
         margin:0,
-        alignItems:'center'
+        alignItems:'center',
+        
     },
+    containerBusinessEmail:{
+        margin:0,
+        alignItems:'center',
+        bottom: 150
+    },
+    
 
     //Header
     header:{
@@ -80,9 +117,24 @@ const styles = StyleSheet.create({
     inputs:{
         width:300,
         marginBottom:25,
+        textAlign:'center',
 
         borderWidth:1,
+        fontFamily:fonts.subtitle,
+        color: colors.black,
         borderColor:colors.gray,
+        borderRadius:10,
+        //Shadow
+    },
+    inputsActive:{
+        width:300,
+        marginBottom:25,
+        textAlign:'center',
+
+        borderWidth:1,
+        fontFamily:fonts.subtitle,
+        color: colors.black,
+        borderColor:colors.yellow,
         borderRadius:10,
         //Shadow
     },
