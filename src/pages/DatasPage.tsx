@@ -5,14 +5,20 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 import {Buttom} from '../components/Buttom';
-
+import  {useNavigation} from '@react-navigation/core';
 
 export function DatasPage(){
+    
+    const navigation = useNavigation();
 
     const [name, setName] = useState(false);
     const [business, setBusiness] = useState(false);
     const [email, setEmail] = useState(false);
     const [container, setContainer] = useState(false);
+
+    function handleNextPage(){
+        navigation.navigate('Home')
+    }
 
 
     function handleColorName(){
@@ -62,11 +68,15 @@ export function DatasPage(){
                 />
             </View>
 
-            <View style={styles.buttonPosicion}>
-                <TouchableOpacity activeOpacity={0.7}>
-                    <Buttom title={'Entrar'}/>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.buttonPosicion} >
+                    <TouchableOpacity 
+                        onPress={handleNextPage}>
+
+                        <Buttom title={'Entrar'}/>
+                    </TouchableOpacity>
+                </View>
+                
+            
 
         </SafeAreaView>
     )
