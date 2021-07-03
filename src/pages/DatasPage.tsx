@@ -10,6 +10,7 @@ import  {useNavigation} from '@react-navigation/core';
 export function DatasPage(){
     
     const navigation = useNavigation();
+    
 
     const [name, setName] = useState(false);
     const [business, setBusiness] = useState(false);
@@ -17,7 +18,8 @@ export function DatasPage(){
     const [container, setContainer] = useState(false);
 
     function handleNextPage(){
-        navigation.navigate('Home')
+        console.log('cu')
+        navigation.navigate("Home")  
     }
 
 
@@ -70,7 +72,9 @@ export function DatasPage(){
 
                 <View style={styles.buttonPosicion} >
                     <TouchableOpacity 
-                        onPress={handleNextPage}>
+                        activeOpacity={0.7} 
+                        onPress={handleNextPage}
+                        >
 
                         <Buttom title={'Entrar'}/>
                     </TouchableOpacity>
