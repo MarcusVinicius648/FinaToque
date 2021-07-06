@@ -4,6 +4,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Welcome} from '../pages/Welcome';
 import {DatasPage} from '../pages/DatasPage';
 import {Home} from '../pages/Home';
+import {Control} from '../pages/Control';
+import {Finance} from '../pages/Finance';
+import {Stock} from '../pages/Stock';
 
 const stackRoutes = createStackNavigator();
 
@@ -29,6 +32,18 @@ const AppRoute: React.FC = () => (
         <stackRoutes.Screen 
             name="Home" 
             component={Home} 
+        />
+        <stackRoutes.Screen 
+            name="Control" 
+            component={Control} 
+        />
+        <stackRoutes.Screen 
+            name="Finance" 
+            component={Finance} 
+        />
+        <stackRoutes.Screen 
+            name="Stock" 
+            component={Stock} 
         />
     </stackRoutes.Navigator>
 )

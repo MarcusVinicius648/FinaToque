@@ -37,6 +37,15 @@ export function Home(){
     function handleUpdateDatas(){
         navigation.navigate('DatasPage')
     }
+    function handleControl(){
+        navigation.navigate('Control')
+    }
+    function handleFinance(){
+        navigation.navigate('Finance')
+    }
+    function handleStock(){
+        navigation.navigate('Stock')
+    }
     
     return(
         <SafeAreaView style={styles.container}>
@@ -59,7 +68,7 @@ export function Home(){
             </View>
 
             <View style={styles.mainContainer}>
-                <TouchableOpacity activeOpacity={0.7}>
+                <TouchableOpacity activeOpacity={0.7} onPress={handleControl}>
                     <View style={styles.boxControl}>
                         <Text style={styles.boxTitle}>
                             Controle
@@ -68,7 +77,7 @@ export function Home(){
                     </View>
                 </TouchableOpacity>
                
-                <TouchableOpacity activeOpacity={0.7}>
+                <TouchableOpacity activeOpacity={0.7} onPress={handleFinance}>
                     <View style={styles.boxFinance}>
                         <Text style={styles.boxTitle}>
                             Finanças
@@ -77,7 +86,7 @@ export function Home(){
                     </View>
                 </TouchableOpacity>
                 
-                <TouchableOpacity activeOpacity={0.7}>
+                <TouchableOpacity activeOpacity={0.7} onPress={handleStock}>
                     <View style={styles.boxStock}>
                         <Text style={styles.boxTitle}>
                             Estoque

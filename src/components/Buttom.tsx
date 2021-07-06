@@ -12,9 +12,9 @@ export function Buttom({ title, ...rest }: ButtonProps) {
     return (
        
             <View  style={styles.container}>
-            <Text style={styles.text} {...rest}>
-                {title}
-            </Text>
+                <Text style={styles.text} {...rest}>
+                    {title}
+                </Text>
             </View>  
     )
 }
