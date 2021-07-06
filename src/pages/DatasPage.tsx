@@ -1,27 +1,49 @@
 import React, {useState} from 'react';
-import{SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native';
+import{SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity,Alert} from 'react-native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Buttom} from '../components/Buttom';
 import  {useNavigation} from '@react-navigation/core';
 
 export function DatasPage(){
     
-    const navigation = useNavigation();
-    
+    //Save the inputs datas
+    const [saveName, setSaveName] = useState<string>();
+    const [saveBusiness, setSaveBusiness] = useState<string>();
+    const [saveEmail, setSaveEmail] = useState<string>();
 
+    function nameSave(UserName: string){
+        setSaveName(UserName)
+    }
+    function businessSave(UserBusiness: string){
+        setSaveBusiness(UserBusiness)
+    }
+    function emailSave(UserEmail: string){
+        setSaveEmail(UserEmail)
+    }
+
+    //Navigation to home´s page
+    const navigation = useNavigation();
+
+    async function handleNextPage(){
+        if(!saveName || !saveBusiness || !saveEmail)
+        return Alert.alert("Por favor, Preencha todos os campos!😢")
+        
+        await AsyncStorage.setItem('@finatoque:userName', saveName);
+        await AsyncStorage.setItem('@finatoque:userBusiness',saveBusiness);
+        await AsyncStorage.setItem('@finatoque:userEmail',saveEmail);
+        navigation.navigate("Home")  
+    }
+
+    //change the inputs color and fix the container position
     const [name, setName] = useState(false);
     const [business, setBusiness] = useState(false);
     const [email, setEmail] = useState(false);
     const [container, setContainer] = useState(false);
-
-    function handleNextPage(){
-        console.log('cu')
-        navigation.navigate("Home")  
-    }
-
 
     function handleColorName(){
         setName(!name)
@@ -30,13 +52,12 @@ export function DatasPage(){
    
     function handleColorBusiness(){
         setBusiness(!business)
-        setContainer(!container)  
-       
+        setContainer(!container)    
     }
+
     function handleColorEmail(){
         setEmail(!email)
         setContainer(!container)
-       
     }
 
     return(
@@ -53,6 +74,8 @@ export function DatasPage(){
                     style={name ? styles.inputsActive : styles.inputs}
                     onFocus={handleColorName}
                     onBlur={handleColorName}
+                    onChangeText={nameSave}
+                    maxLength={20}
                 />
 
                 <Text style={styles.label}>Nome do seu Negócio:</Text>
@@ -60,6 +83,8 @@ export function DatasPage(){
                     style={business ? styles.inputsActive : styles.inputs}
                     onFocus={handleColorBusiness}
                     onBlur={handleColorBusiness}
+                    onChangeText={businessSave}
+                    maxLength={20}
                 />
 
                 <Text style={styles.label}>E-mail:</Text>
@@ -67,6 +92,7 @@ export function DatasPage(){
                      style={email ? styles.inputsActive : styles.inputs}
                      onFocus={handleColorEmail}
                      onBlur={handleColorEmail}
+                     onChangeText={emailSave}
                 />
             </View>
 
@@ -75,7 +101,6 @@ export function DatasPage(){
                         activeOpacity={0.7} 
                         onPress={handleNextPage}
                         >
-
                         <Buttom title={'Entrar'}/>
                     </TouchableOpacity>
                 </View>

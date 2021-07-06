@@ -1,13 +1,37 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {SafeAreaView,StyleSheet,View,Text,TouchableOpacity} from 'react-native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+
 import { useNavigation } from '@react-navigation/core';
 import { Entypo } from '@expo/vector-icons';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export function Home(){
     
+    //Set up variables to show on the page
+    const [name,setName] = useState<string>();
+    const [business,setBusiness] = useState<string>();
+    const [email,setEmail] = useState<string>();
+
+    useEffect(()=>{
+        async function setDatas(){
+            const ExtraName = await AsyncStorage.getItem('@finatoque:userName');
+            setName(ExtraName || '')
+
+            const ExtraBusiness = await AsyncStorage.getItem('@finatoque:userBusiness')
+            setBusiness(ExtraBusiness || '')
+
+            const ExtraEmail = await AsyncStorage.getItem('@finatoque:userEmail');
+            setEmail(ExtraEmail || '')
+        }
+        setDatas();
+    },[]);
+
+
+    //Build the routes
     const navigation = useNavigation();
 
     function handleUpdateDatas(){
@@ -27,10 +51,10 @@ export function Home(){
 
             <View style={styles.lowContainer}>
                 <Text style={styles.businessName}>
-                    Nome do Comércio
+                    {business}
                 </Text>
                 <Text style={styles.ownerName}>
-                    Bem vindo, Nome do Proprietário!
+                    Bem vindo(a), {name}!
                 </Text>
             </View>
 
@@ -78,6 +102,7 @@ export function Home(){
         </SafeAreaView>
     )
 };
+
 const styles = StyleSheet.create({
     container:{
         margin:0,
