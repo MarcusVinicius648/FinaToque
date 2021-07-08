@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import{SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity,Alert} from 'react-native';
+import{SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity,Alert,KeyboardAvoidingView,Platform} from 'react-native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -61,53 +61,58 @@ export function DatasPage(){
     }
 
     return(
-        <SafeAreaView style={container ? styles.containerBusinessEmail : styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.title}>
-                    Fina<Text style={styles.fina}>Toque</Text>
-                </Text>
-            </View>
+        <KeyboardAvoidingView behavior='position'>
+             <SafeAreaView style={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.title}>
+                        Fina<Text style={styles.fina}>Toque</Text>
+                    </Text>
+                </View>
 
-            <View style={styles.inputsContainer}>
-                <Text style={styles.label}>Nome:</Text>
-                <TextInput
-                    style={name ? styles.inputsActive : styles.inputs}
-                    onFocus={handleColorName}
-                    onBlur={handleColorName}
-                    onChangeText={nameSave}
-                    maxLength={20}
-                />
+                <View style={styles.inputsContainer}>
+                    
+                    <Text style={styles.label}>Nome:</Text>
+                    <TextInput
+                        style={name ? styles.inputsActive : styles.inputs}
+                        onFocus={handleColorName}
+                        onBlur={handleColorName}
+                        onChangeText={nameSave}
+                        maxLength={20}
+                    />
 
-                <Text style={styles.label}>Nome do seu Negócio:</Text>
-                <TextInput
-                    style={business ? styles.inputsActive : styles.inputs}
-                    onFocus={handleColorBusiness}
-                    onBlur={handleColorBusiness}
-                    onChangeText={businessSave}
-                    maxLength={20}
-                />
+                    <Text style={styles.label}>Nome do seu Negócio:</Text>
+                    <TextInput
+                        style={business ? styles.inputsActive : styles.inputs}
+                        onFocus={handleColorBusiness}
+                        onBlur={handleColorBusiness}
+                        onChangeText={businessSave}
+                        maxLength={20}
+                    />
 
-                <Text style={styles.label}>E-mail:</Text>
-                <TextInput
-                     style={email ? styles.inputsActive : styles.inputs}
-                     onFocus={handleColorEmail}
-                     onBlur={handleColorEmail}
-                     onChangeText={emailSave}
-                />
-            </View>
+                    <Text style={styles.label}>E-mail:</Text>
+                    <TextInput
+                        style={email ? styles.inputsActive : styles.inputs}
+                        onFocus={handleColorEmail}
+                        onBlur={handleColorEmail}
+                        onChangeText={emailSave}
+                    />
+                </View>
+                
 
                 <View style={styles.buttonPosicion} >
+                    
                     <TouchableOpacity 
                         activeOpacity={0.7} 
                         onPress={handleNextPage}
                         >
                         <Buttom title={'Entrar'}/>
                     </TouchableOpacity>
+                    
                 </View>
                 
-            
-
-        </SafeAreaView>
+            </SafeAreaView>
+        </KeyboardAvoidingView>
+       
     )
 }
 
@@ -143,7 +148,7 @@ const styles = StyleSheet.create({
 
     //Inputs
     inputsContainer:{
-        marginTop: 40,
+        marginTop: 50,
 
     },
     label:{
