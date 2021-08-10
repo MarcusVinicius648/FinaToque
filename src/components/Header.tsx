@@ -37,19 +37,23 @@ const styles = StyleSheet.create({
     container:{
         marginTop: 40,
         width:'100%',
-        height: 80,
-        borderBottomWidth:1
+        height: 85,
+        marginBottom:0,
+        borderBottomWidth:1,
+        borderColor:colors.black,
+        position:'relative',
+        
     },
 
     icon:{
         fontSize:26,
         paddingLeft:10
     },
-
     title:{
         paddingLeft:17,
         paddingTop: 15,
         fontSize:24,
-        fontFamily:fonts.heading
+        fontFamily:fonts.heading,
+        
     },
 });
