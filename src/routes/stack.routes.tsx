@@ -7,6 +7,7 @@ import {Home} from '../pages/Home';
 import {Control} from '../pages/Control';
 import {Finance} from '../pages/Finance';
 import {Stock} from '../pages/Stock';
+import { AddItems } from '../pages/AddItems';
 
 const stackRoutes = createStackNavigator();
 
@@ -44,6 +45,10 @@ const AppRoute: React.FC = () => (
         <stackRoutes.Screen 
             name="Stock" 
             component={Stock} 
+        />
+         <stackRoutes.Screen 
+            name="AddItems" 
+            component={AddItems} 
         />
     </stackRoutes.Navigator>
 )

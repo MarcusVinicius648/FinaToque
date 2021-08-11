@@ -16,7 +16,7 @@ export function Header({title, ...rest}:HeaderProps){
     //Back to home´s page
     const navigation = useNavigation();
     function handleBackHome(){
-        navigation.navigate('Home')
+        navigation.goBack();
     }
     
     return(

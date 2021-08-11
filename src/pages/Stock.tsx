@@ -1,13 +1,20 @@
 import React from 'react';
-import{SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
+import{SafeAreaView, StyleSheet, ScrollView, View, Text, TouchableOpacity} from 'react-native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 import { Entypo } from '@expo/vector-icons';
 import { Header } from '../components/Header';
+import { useNavigation } from '@react-navigation/core';
 
 export function Stock(){
+    const navigation =useNavigation();
+
+    function handleAddItems(){
+        navigation.navigate('AddItems');
+    }
+
     return(
         <SafeAreaView style={styles.container}>
             <Header title={'Estoque'}/>
@@ -122,7 +129,17 @@ export function Stock(){
                         </View>
                     </View>
                 </View>
+           
+
+            <TouchableOpacity activeOpacity={0.7} onPress={handleAddItems}>
+                <View  style={styles.containerButtom }>
+                    <Text style={styles.textButtom} >
+                        Adicionar Item +
+                    </Text>
+                </View>  
+            </TouchableOpacity>
             </ScrollView>
+
         </SafeAreaView>
     )
 };
@@ -141,6 +158,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.3,
         borderColor:colors.gray,
         marginTop:30,   
+        borderRadius:12
     },
     itemsTitle:{
         padding:10,
@@ -213,4 +231,19 @@ const styles = StyleSheet.create({
     itemsQuantPlus:{
         fontSize:18,
     },
+    containerButtom: {
+        backgroundColor:colors.pink,
+        width: 340,
+        height: 40,
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:20,
+        marginTop:40
+    },
+    textButtom: {
+       color: colors.background,
+       fontFamily:fonts.heading,
+       fontSize:17
+    },
+    
 });

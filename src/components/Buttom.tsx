@@ -10,8 +10,7 @@ interface ButtonProps extends TouchableOpacityProps {
 
 export function Buttom({ title, ...rest }: ButtonProps) {
     return (
-       
-            <View  style={styles.container}>
+            <View  style={styles.container }>
                 <Text style={styles.text} {...rest}>
                     {title}
                 </Text>
