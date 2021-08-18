@@ -127,8 +127,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         bottom: 150
     },
-    
-
     //Header
     header:{
         top:0,
