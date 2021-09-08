@@ -1,11 +1,13 @@
 import express from 'express';
+import routes from './routes';
 
 const app = express();
 
-app.get('/users', (request, response) => {
-    // {} = para um único retorno;
-    // [] = para múltiplos retornos;
-    response.json(['Hello World']);
-});
+// GET: buscar informações no back-end;
+//POST: criar uma nova informação no back-end;
+//PUT: Atualizar uma informação já existente;
+//DELETE: remover uma informação do back-end;
 
+app.use(routes);
+app.use(express.json());
 app.listen(3333);
