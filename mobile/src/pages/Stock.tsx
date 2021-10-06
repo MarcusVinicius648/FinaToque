@@ -19,7 +19,7 @@ export function Stock(){
         <SafeAreaView style={styles.container}>
             <Header title={'Estoque'}/>
 
-            <ScrollView style={styles.scrollContainer} >
+            <ScrollView>
                 <View  style={styles.itemsContainer}>
                     <Text style={styles.itemsTitle}>
                         Bombom
@@ -147,11 +147,10 @@ export function Stock(){
 const styles = StyleSheet.create({
     container:{
         margin:0,
-        alignItems:'center'
+        alignItems:'center',
+        flex:1
     },
-    scrollContainer:{
-        marginTop: -10,
-    },
+    
     itemsContainer:{
         width: 350,
         height: 100,
@@ -238,7 +237,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         borderRadius:20,
-        marginTop:40
+        marginTop:40,
+        marginBottom:20
     },
     textButtom: {
        color: colors.background,

@@ -1,14 +1,50 @@
-import React from 'react';
-import {KeyboardAvoidingView, SafeAreaView, StyleSheet,TextInput, Text, TouchableOpacity, View} from 'react-native';
+import React,{useState} from 'react';
+import {KeyboardAvoidingView, SafeAreaView, StyleSheet,TextInput, Text, TouchableOpacity, View, Alert} from 'react-native';
 import { Header } from '../components/Header';
 import { useNavigation } from '@react-navigation/core';
+import api from '../../server/api';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 export function AddItems(){
+    const[name, setName] = useState<String>('');
+    const[valueC, setValueC] = useState<string>('');
+    const[valueV, setValueV] = useState<string>('');
+    const[quantity, setQuantity] = useState<Number>();
     const navigation = useNavigation();
-    function handleAddItems(){
+
+    async function handleAddItems(){
+        
+        const itemValueC = Number.parseFloat(valueC);
+        const itemValueV =  Number.parseFloat(valueV);
+        const itemQuantity = quantity;
+        const itemName = name;
+        
+        const data = {
+            itemName,
+            itemValueC,
+            itemValueV,
+            itemQuantity,
+        }
+        console.log(data)
+        await api.post('produto', data);
+
+        Alert.alert('Item registrado!')
         navigation.goBack();
+    }
+
+    function handleSetName(itemName:string){
+        setName(itemName);
+    }
+    function handleSetValueC(itemValueC:string){
+        setValueC(itemValueC)
+    }
+    function handleSetValueV(itemValueV:string){
+        setValueV(itemValueV)
+    }
+    function handleSetQnt(itemQuant:string){
+        const qnt = Number(itemQuant);
+        setQuantity(qnt)
     }
     return(
         <SafeAreaView style={styles.container}>
@@ -19,22 +55,28 @@ export function AddItems(){
                             style={styles.inputs}
                             placeholder={'Nome do Produto'}
                             placeholderTextColor={colors.black}
+                            onChangeText={handleSetName}
                         />
                         <TextInput 
                             style={styles.inputs}
-                            placeholder={'Valor de Compra'}
+                            placeholder={'Valor de Custo'}
                             placeholderTextColor={colors.black}
+                            keyboardType={'number-pad'}
+                            onChangeText={handleSetValueC}
                         />
                         <TextInput 
                             style={styles.inputs}
                             placeholder={'Valor de Venda'}
                             placeholderTextColor={colors.black}
+                            keyboardType={'number-pad'}
+                            onChangeText={handleSetValueV}
                         />
                         <TextInput 
                             style={styles.inputs}
                             placeholder={'Quantidade'}
                             placeholderTextColor={colors.black}
                             keyboardType={'number-pad'}
+                            onChangeText={handleSetQnt}
                         />
                     </View>
                 </KeyboardAvoidingView>
