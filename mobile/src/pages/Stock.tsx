@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import{SafeAreaView, StyleSheet, ScrollView, View, Text, TouchableOpacity} from 'react-native';
+import api from '../../server/api';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -8,128 +9,58 @@ import { Entypo } from '@expo/vector-icons';
 import { Header } from '../components/Header';
 import { useNavigation } from '@react-navigation/core';
 
+interface Produto{
+    id:number,
+    nome:string,
+    valorVenda:number,
+    quantidade:number
+}
+
 export function Stock(){
     const navigation =useNavigation();
+    const [produtos, setProdutos] = useState<Produto[]>([])
 
     function handleAddItems(){
         navigation.navigate('AddItems');
     }
+    useEffect(() =>{
+        api.get('produto').then(response=>{
+            setProdutos(response.data)
+        })
+    },[]);
+
 
     return(
         <SafeAreaView style={styles.container}>
             <Header title={'Estoque'}/>
 
             <ScrollView>
-                <View  style={styles.itemsContainer}>
-                    <Text style={styles.itemsTitle}>
-                        Bombom
-                    </Text>
-                    <Entypo name={'new-message'} style={styles.itemsEdit}/>
-                    <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
-                    <Text style={styles.itemsPrice}>
-                        Preço: R$ 10,00
-                    </Text>
-                    <View style={styles.itemsQuantContainer}>
-                        <View style={styles.itemsQuantContainerMinus}>
-                            <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
-                        </View>
-                        <View style={styles.itemsQuantContainerNumber}>
-                            <Text style={styles.itemsQuant}> 1 </Text>
-                        </View>
-                        <View style={styles.itemsQuantContainerPlus}>
-                            <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
-                        </View>
-                    </View>
-                </View>
-
-                <View  style={styles.itemsContainer}>
-                    <Text style={styles.itemsTitle}>
-                        Bolo de Pote
-                    </Text>
-                    <Entypo name={'new-message'} style={styles.itemsEdit}/>
-                    <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
-                    <Text style={styles.itemsPrice}>
-                        Preço: R$ 10,00
-                    </Text>
-                    <View style={styles.itemsQuantContainer}>
-                        <View style={styles.itemsQuantContainerMinus}>
-                            <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
-                        </View>
-                        <View style={styles.itemsQuantContainerNumber}>
-                            <Text style={styles.itemsQuant}> 1 </Text>
-                        </View>
-                        <View style={styles.itemsQuantContainerPlus}>
-                            <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
+                {produtos.map(produto=>(
+                    <View  
+                        style={styles.itemsContainer}
+                        key={produto.id}
+                    >
+                        <Text style={styles.itemsTitle}>
+                            {produto.nome}
+                        </Text>
+                        <Entypo name={'new-message'} style={styles.itemsEdit}/>
+                        <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
+                        <Text style={styles.itemsPrice}>
+                            Preço: R$ {produto.valorVenda}
+                        </Text>
+                        <View style={styles.itemsQuantContainer}>
+                            <View style={styles.itemsQuantContainerMinus}>
+                                <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
+                            </View>
+                            <View style={styles.itemsQuantContainerNumber}>
+                                <Text style={styles.itemsQuant}> {produto.quantidade} </Text>
+                            </View>
+                            <View style={styles.itemsQuantContainerPlus}>
+                                <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
+                            </View>
                         </View>
                     </View>
-                </View>
-
-                <View  style={styles.itemsContainer}>
-                    <Text style={styles.itemsTitle}>
-                        Pavê
-                    </Text>
-                    <Entypo name={'new-message'} style={styles.itemsEdit}/>
-                    <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
-                    <Text style={styles.itemsPrice}>
-                        Preço: R$ 10,00
-                    </Text>
-                    <View style={styles.itemsQuantContainer}>
-                        <View style={styles.itemsQuantContainerMinus}>
-                            <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
-                        </View>
-                        <View style={styles.itemsQuantContainerNumber}>
-                            <Text style={styles.itemsQuant}> 1 </Text>
-                        </View>
-                        <View style={styles.itemsQuantContainerPlus}>
-                            <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
-                        </View>
-                    </View>
-                </View>
-
-                <View  style={styles.itemsContainer}>
-                    <Text style={styles.itemsTitle}>
-                        Salada de fruta
-                    </Text>
-                    <Entypo name={'new-message'} style={styles.itemsEdit}/>
-                    <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
-                    <Text style={styles.itemsPrice}>
-                        Preço: R$ 10,00
-                    </Text>
-                    <View style={styles.itemsQuantContainer}>
-                        <View style={styles.itemsQuantContainerMinus}>
-                            <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
-                        </View>
-                        <View style={styles.itemsQuantContainerNumber}>
-                            <Text style={styles.itemsQuant}> 1 </Text>
-                        </View>
-                        <View style={styles.itemsQuantContainerPlus}>
-                            <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
-                        </View>
-                    </View>
-                </View>
-
-                <View  style={styles.itemsContainer}>
-                    <Text style={styles.itemsTitle}>
-                        Pão
-                    </Text>
-                    <Entypo name={'new-message'} style={styles.itemsEdit}/>
-                    <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
-                    <Text style={styles.itemsPrice}>
-                        Preço: R$ 10,00
-                    </Text>
-                    <View style={styles.itemsQuantContainer}>
-                        <View style={styles.itemsQuantContainerMinus}>
-                            <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
-                        </View>
-                        <View style={styles.itemsQuantContainerNumber}>
-                            <Text style={styles.itemsQuant}> 1 </Text>
-                        </View>
-                        <View style={styles.itemsQuantContainerPlus}>
-                            <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
-                        </View>
-                    </View>
-                </View>
-           
+                ))}
 
             <TouchableOpacity activeOpacity={0.7} onPress={handleAddItems}>
                 <View  style={styles.containerButtom }>

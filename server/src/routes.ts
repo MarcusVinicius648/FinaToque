@@ -1,9 +1,11 @@
 import express from 'express';
+import knex from 'knex';
+
+import ProdutoController from './controllers/ProdutoController';
 
 const routes = express.Router();
+const produtoController = new ProdutoController();
 
-routes.get('/users', (request, response) => {
-    response.json(['Hello World']);
-});
-
+routes.post('/produto', produtoController.create);
+routes.get('/produto', produtoController.show)
 export default routes
