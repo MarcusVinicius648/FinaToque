@@ -8,9 +8,9 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export function AddItems(){
-    const[name, setName] = useState<string>('');
-    const[valueC, setValueC] = useState<string>('');
-    const[valueV, setValueV] = useState<string>('');
+    const[nome, setNome] = useState<String>('');
+    const[valueC, setValueC] = useState<String>('');
+    const[valueV, setValueV] = useState<String>('');
     const[quantity, setQuantity] = useState<Number>();
     const navigation = useNavigation();
     
@@ -19,7 +19,6 @@ export function AddItems(){
         const valorCompra = Number(valueC);
         const valorVenda =  Number(valueV);
         const quantidade = quantity;
-        const nome = name;
 
         const data = {
             nome,
@@ -27,7 +26,7 @@ export function AddItems(){
             valorVenda,
             quantidade,
         };
-        console.log(data)
+        
         await api.post('produtos', data);
 
         Alert.alert('Item registrado!')
@@ -35,7 +34,7 @@ export function AddItems(){
     }
 
     function handleSetName(itemName:string){
-        setName(itemName);
+        setNome(itemName);
     }
     function handleSetValueC(itemValueC:string){
         setValueC(itemValueC)

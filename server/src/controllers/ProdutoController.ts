@@ -25,12 +25,12 @@ class ProdutoController{
     async show(request:Request, response:Response){
         const produto = await Knex('produtos').select('*');
 
-        const serializedItems = produto.map(produtos =>{
+        const serializedItems = produto.map(produt =>{
             return{
-                id:produtos.id,
-                nome:produtos.nome,
-                valorVenda:produtos.valorVenda,
-                quantidade:produtos.quantidade
+                id:produt.id,
+                nome:produt.nome,
+                valorVenda:produt.valorVenda,
+                quantidade:produt.quantidade
             };
         });
         return response.json(serializedItems);

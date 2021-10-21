@@ -24,7 +24,7 @@ export function Stock(){
         navigation.navigate('AddItems');
     }
     useEffect(() =>{
-        api.get('produto').then(response=>{
+        api.get('produtos').then(response=>{
             setProdutos(response.data)
         })
     },[]);
