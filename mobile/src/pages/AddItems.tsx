@@ -6,32 +6,29 @@ import api from '../../server/api';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+
 export function AddItems(){
     const[name, setName] = useState<string>('');
     const[valueC, setValueC] = useState<string>('');
     const[valueV, setValueV] = useState<string>('');
     const[quantity, setQuantity] = useState<Number>();
     const navigation = useNavigation();
-    var number=1
-
+    
     async function handleAddItems(){
         
         const valorCompra = Number(valueC);
         const valorVenda =  Number(valueV);
         const quantidade = quantity;
         const nome = name;
-        const id= number
-        number=number+1
 
         const data = {
-            id,
             nome,
             valorCompra,
             valorVenda,
             quantidade,
         };
         console.log(data)
-        await api.post('produto', data);
+        await api.post('produtos', data);
 
         Alert.alert('Item registrado!')
         navigation.goBack();

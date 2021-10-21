@@ -6,6 +6,6 @@ import ProdutoController from './controllers/ProdutoController';
 const routes = express.Router();
 const produtoController = new ProdutoController();
 
-routes.post('/produto', produtoController.create);
-routes.get('/produto', produtoController.show)
+routes.post('/produtos', produtoController.create);
+routes.get('/produtos', produtoController.show);
 export default routes

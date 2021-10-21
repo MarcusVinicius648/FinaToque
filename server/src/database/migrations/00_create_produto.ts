@@ -1,13 +1,13 @@
 import {Knex} from 'knex';
 export async function up(knex:Knex){
-    return knex.schema.createTable('produto', table =>{
-        table.integer('id').primary();
-        table.string('nome');
+    return knex.schema.createTable('produtos', table =>{
+        table.increments('id').primary();
+        table.string('nome').notNullable();
         table.integer('valorCompra').notNullable();
         table.integer('valorVenda').notNullable();
         table.integer('quantidade').notNullable();
     });
 }
 export async function down(knex:Knex) {
-        knex.schema.dropTable('produto')
+    return knex.schema.dropTable('produtos')
 }

@@ -4,7 +4,6 @@ import Knex from '../database/connection';
 class ProdutoController{
     async create(request:Request, response:Response){
         const {
-            id,
             nome,
             valorCompra,
             valorVenda,
@@ -12,20 +11,19 @@ class ProdutoController{
         } = request.body;
 
         const produtos ={
-            id,
             nome,
             valorCompra,
             valorVenda,
             quantidade
-        }
+        };
 
-        await Knex('produto').insert(produtos);
+        await Knex('produtos').insert(produtos);
     
         return response.json({sucess:true})
     }
 
     async show(request:Request, response:Response){
-        const produto = await Knex('produto').select('*');
+        const produto = await Knex('produtos').select('*');
 
         const serializedItems = produto.map(produtos =>{
             return{
