@@ -61,57 +61,56 @@ export function DatasPage(){
     }
 
     return(
-        <KeyboardAvoidingView behavior='position'>
+       
              <SafeAreaView style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.title}>
-                        Fina<Text style={styles.fina}>Toque</Text>
-                    </Text>
-                </View>
-
-                <View style={styles.inputsContainer}>
+                <KeyboardAvoidingView behavior={'position'} style={{width:'100%'}}>
+                    <View style={styles.header}>
+                        <Text style={styles.title}>
+                            Fina<Text style={styles.fina}>Toque</Text>
+                        </Text>
+                    </View>
                     
-                    <Text style={styles.label}>Nome:</Text>
-                    <TextInput
-                        style={name ? styles.inputsActive : styles.inputs}
-                        onFocus={handleColorName}
-                        onBlur={handleColorName}
-                        onChangeText={nameSave}
-                        maxLength={20}
-                    />
+                    <View style={styles.inputsContainer}>
+                        
+                        <Text style={styles.label}>Nome:</Text>
+                        <TextInput
+                            style={name ? styles.inputsActive : styles.inputs}
+                            onFocus={handleColorName}
+                            onBlur={handleColorName}
+                            onChangeText={nameSave}
+                            maxLength={20}
+                        />
 
-                    <Text style={styles.label}>Nome do seu Negócio:</Text>
-                    <TextInput
-                        style={business ? styles.inputsActive : styles.inputs}
-                        onFocus={handleColorBusiness}
-                        onBlur={handleColorBusiness}
-                        onChangeText={businessSave}
-                        maxLength={20}
-                    />
+                        <Text style={styles.label}>Nome do seu Negócio:</Text>
+                        <TextInput
+                            style={business ? styles.inputsActive : styles.inputs}
+                            onFocus={handleColorBusiness}
+                            onBlur={handleColorBusiness}
+                            onChangeText={businessSave}
+                            maxLength={20}
+                        />
 
-                    <Text style={styles.label}>E-mail:</Text>
-                    <TextInput
-                        style={email ? styles.inputsActive : styles.inputs}
-                        onFocus={handleColorEmail}
-                        onBlur={handleColorEmail}
-                        onChangeText={emailSave}
-                    />
-                </View>
-                
+                        <Text style={styles.label}>E-mail:</Text>
+                        <TextInput
+                            style={email ? styles.inputsActive : styles.inputs}
+                            onFocus={handleColorEmail}
+                            onBlur={handleColorEmail}
+                            onChangeText={emailSave}
+                        />
+                    </View>
+                </KeyboardAvoidingView>
 
                 <View style={styles.buttonPosicion} >
-                    
                     <TouchableOpacity 
                         activeOpacity={0.7} 
                         onPress={handleNextPage}
                         >
                         <Buttom title={'Entrar'}/>
-                    </TouchableOpacity>
-                    
+                    </TouchableOpacity>  
                 </View>
                 
             </SafeAreaView>
-        </KeyboardAvoidingView>
+            
        
     )
 }
@@ -147,7 +146,7 @@ const styles = StyleSheet.create({
     //Inputs
     inputsContainer:{
         marginTop: 50,
-
+        marginLeft:20
     },
     label:{
         marginBottom:10,
