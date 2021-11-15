@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
 
     //Header
     header:{
+        
         width: '100%',
         alignItems:'center',
     },
@@ -130,7 +131,6 @@ const styles = StyleSheet.create({
     },
 
     inconEntypo:{
-        marginRight:6,
         marginTop:-3,
         color:colors.yellow,
         fontSize:25

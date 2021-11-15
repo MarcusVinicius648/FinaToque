@@ -30,10 +30,32 @@ class ProdutoController{
                 id:produt.id,
                 nome:produt.nome,
                 valorVenda:produt.valorVenda,
+                valorCompra:produt.valorCompra,
                 quantidade:produt.quantidade
             };
         });
         return response.json(serializedItems);
+    }
+
+    async change(request:Request, response:Response){
+        const {id} = request.params;
+        
+        const{
+            nome,
+            valorCompra,
+            valorVenda,
+            quantidade
+        } = request.body;
+
+        const produto ={
+            nome,
+            valorCompra,
+            valorVenda,
+            quantidade
+        };
+        
+        await Knex('produtos').update(produto).where('id', id);
+        return response.json({sucess:true})
     }
 };
 

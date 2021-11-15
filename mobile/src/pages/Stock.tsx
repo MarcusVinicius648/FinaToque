@@ -13,22 +13,50 @@ interface Produto{
     id:number,
     nome:string,
     valorVenda:number,
+    valorCompra:number,
     quantidade:number
 }
 
 export function Stock(){
     const navigation =useNavigation();
     const [produtos, setProdutos] = useState<Produto[]>([])
+    const [load,setLoad] = useState(true);
 
     function handleAddItems(){
         navigation.navigate('AddItems');
     }
     useEffect(() =>{
+        navigation.addListener('focus', () => {
+            setLoad(!load);
+        });
+
         api.get('produtos').then(response=>{
             setProdutos(response.data)
         })
-    },[]);
+    },[load, navigation]);
 
+    async function handleAddQuanty(id:number,nome:string,valorVenda:number,valorCompra:number, quantidade:number){
+        const produto={
+            nome,
+            valorCompra,
+            valorVenda,
+            quantidade:quantidade + 1
+        };
+        await api.put(`produtos/${id}`,produto);
+        setLoad(!load);
+    }
+
+    async function handleLessQuanty(id:number,nome:string,valorVenda:number,valorCompra:number, quantidade:number){
+        const produto={
+            nome,
+            valorCompra,
+            valorVenda,
+            quantidade:quantidade - 1
+        };
+
+        await api.put(`produtos/${id}`,produto);
+        setLoad(!load);
+    }
 
     return(
         <SafeAreaView style={styles.container}>
@@ -48,16 +76,30 @@ export function Stock(){
                         <Text style={styles.itemsPrice}>
                             Preço: R$ {produto.valorVenda}
                         </Text>
+
                         <View style={styles.itemsQuantContainer}>
-                            <View style={styles.itemsQuantContainerMinus}>
-                                <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
-                            </View>
+                            <TouchableOpacity
+                                activeOpacity={0.6}
+                                onPress={()=> handleLessQuanty(produto.id,produto.nome,produto.valorVenda,produto.valorCompra,produto.quantidade)}
+                            >
+                                <View style={styles.itemsQuantContainerMinus}>
+                                    <Entypo name={'minus'} style={styles.itemsQuantMinus}/>
+                                </View>
+                            </TouchableOpacity>
+                            
                             <View style={styles.itemsQuantContainerNumber}>
                                 <Text style={styles.itemsQuant}> {produto.quantidade} </Text>
                             </View>
-                            <View style={styles.itemsQuantContainerPlus}>
-                                <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
-                            </View>
+
+                            <TouchableOpacity
+                                activeOpacity={0.6}
+                                onPress={()=> handleAddQuanty(produto.id,produto.nome,produto.valorVenda,produto.valorCompra,produto.quantidade)}
+                            >
+                                <View style={styles.itemsQuantContainerPlus}>
+                                    <Entypo name={'plus'} style={styles.itemsQuantPlus}/>
+                                </View>
+                            </TouchableOpacity>
+                            
                         </View>
                     </View>
                 ))}

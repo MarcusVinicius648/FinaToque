@@ -8,4 +8,5 @@ const produtoController = new ProdutoController();
 
 routes.post('/produtos', produtoController.create);
 routes.get('/produtos', produtoController.show);
+routes.put('/produtos/:id', produtoController.change);
 export default routes
