@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import{SafeAreaView, StyleSheet, View, Text, TextInput, TouchableOpacity,Alert,KeyboardAvoidingView,Platform} from 'react-native';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {Buttom} from '../components/Buttom';
+import {Buttom} from '../../components/Buttom';
 import  {useNavigation} from '@react-navigation/core';
 
 export function DatasPage(){

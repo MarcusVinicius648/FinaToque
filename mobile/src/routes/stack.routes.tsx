@@ -1,13 +1,13 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {Welcome} from '../pages/Welcome';
-import {DatasPage} from '../pages/DatasPage';
-import {Home} from '../pages/Home';
-import {Control} from '../pages/Control';
-import {Finance} from '../pages/Finance';
-import {Stock} from '../pages/Stock';
-import { AddItems } from '../pages/AddItems';
+import {Welcome} from '../pages/main/Welcome';
+import {DatasPage} from '../pages/main/DatasPage';
+import {Home} from '../pages/main/Home';
+import {Control} from '../pages/control/Control';
+import {Finance} from '../pages/finance/Finance';
+import {Stock} from '../pages/stock/Stock';
+import { AddItems } from '../pages/stock/AddItems';
 
 const stackRoutes = createStackNavigator();
 

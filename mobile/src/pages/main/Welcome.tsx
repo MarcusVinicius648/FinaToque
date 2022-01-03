@@ -1,8 +1,8 @@
 import React from 'react';
 import {SafeAreaView,StyleSheet,View, Text, TouchableOpacity} from 'react-native';
 
-import fonts from '../styles/fonts';
-import colors from '../styles/colors';
+import fonts from '../../styles/fonts';
+import colors from '../../styles/colors';
 
 import { Entypo } from '@expo/vector-icons'
 

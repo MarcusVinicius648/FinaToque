@@ -2,11 +2,11 @@ import React,{useState,useEffect} from 'react';
 import{SafeAreaView, StyleSheet, ScrollView, View, Text, TouchableOpacity} from 'react-native';
 import api from '../../server/api';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 import { Entypo } from '@expo/vector-icons';
-import { Header } from '../components/Header';
+import { Header } from '../../components/Header';
 import { useNavigation } from '@react-navigation/core';
 
 interface Produto{

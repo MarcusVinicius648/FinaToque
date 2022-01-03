@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import {KeyboardAvoidingView, SafeAreaView, StyleSheet,TextInput, Text, TouchableOpacity, View, Alert} from 'react-native';
-import { Header } from '../components/Header';
+import { Header } from '../../components/Header';
 import { useNavigation } from '@react-navigation/core';
-import api from '../../server/api';
+import api from '../../../server/api';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 export function AddItems(){
     const[nome, setNome] = useState<String>('');

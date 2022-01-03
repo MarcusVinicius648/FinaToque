@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
 import{SafeAreaView,StyleSheet, View,Text} from 'react-native';
-import { Header } from '../components/Header';
+import { Header } from '../../components/Header';
 import CheckBox from 'expo-checkbox'
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 
 export function Finance(){

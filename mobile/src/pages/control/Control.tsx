@@ -1,11 +1,11 @@
 import React,{useState} from 'react';
 import{SafeAreaView,StyleSheet, View, TouchableOpacity, Text, TextInput} from 'react-native';
-import { Header } from '../components/Header';
+import { Header } from '../../components/Header';
 import {Feather as Icon} from '@expo/vector-icons';
 import {Picker} from '@react-native-picker/picker';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 import DateTimePicker, {Event} from '@react-native-community/datetimepicker';
 
 export function Control(){

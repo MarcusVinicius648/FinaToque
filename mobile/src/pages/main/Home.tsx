@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import {SafeAreaView,StyleSheet,View,Text,TouchableOpacity} from 'react-native';
 
-import colors from '../styles/colors';
-import fonts from '../styles/fonts';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 import { useNavigation } from '@react-navigation/core';
 import { Entypo } from '@expo/vector-icons';
