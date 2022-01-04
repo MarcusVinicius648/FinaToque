@@ -119,7 +119,6 @@ const styles = StyleSheet.create({
     container:{
         margin:0,
         alignItems:'center',
-        
     },
     containerBusinessEmail:{
         margin:0,
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
         top:0,
         width:'100%',
         alignItems:'center',
-        height: 160,
+        height: '40%',
         backgroundColor:colors.yellow,
     },
     title:{
@@ -145,12 +144,11 @@ const styles = StyleSheet.create({
 
     //Inputs
     inputsContainer:{
-        marginTop: 50,
-        marginLeft:20
+       alignItems:'center',
+       marginTop:40
     },
     label:{
         marginBottom:10,
-
         fontSize:14,
         fontFamily:fonts.text,
         color:colors.black
@@ -182,6 +180,6 @@ const styles = StyleSheet.create({
 
     //Buttom
     buttonPosicion:{
-        marginTop: 20
+        marginTop:20
     },
 });

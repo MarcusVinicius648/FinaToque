@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView,StyleSheet,View, Text, TouchableOpacity} from 'react-native';
+import {SafeAreaView,StyleSheet,View, Text, TouchableOpacity, Dimensions} from 'react-native';
 
 import fonts from '../../styles/fonts';
 import colors from '../../styles/colors';
@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/core';
 export function Welcome(){
 
     const navigation = useNavigation();
+    const {height,width } = Dimensions.get('window')
 
     function handleNextPage(){
         navigation.navigate('DatasPage')
@@ -52,14 +53,14 @@ export function Welcome(){
 const styles = StyleSheet.create({
     container:{
         margin:0,
-        alignItems:'center'
+        alignItems:'center',
     },
     //Header
     header:{
         top:0,
         width:'100%',
         alignItems:'center',
-        height: 300,
+        height: '60%',
         backgroundColor:colors.yellow,
     },
     title:{
@@ -74,7 +75,8 @@ const styles = StyleSheet.create({
     //Subtitle
     containerSubtitle:{
         marginTop: 40,
-        alignItems:'center',
+        alignItems:'center',      
+        marginHorizontal:5,
     },
     subtitle:{
         fontSize: 20,
