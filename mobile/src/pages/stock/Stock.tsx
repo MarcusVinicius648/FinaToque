@@ -71,7 +71,13 @@ export function Stock(){
                         <Text style={styles.itemsTitle}>
                             {produto.nome}
                         </Text>
-                        <Entypo name={'new-message'} style={styles.itemsEdit}/>
+
+                        <TouchableOpacity
+                            //14min20s
+                        >
+                            <Entypo name={'new-message'} style={styles.itemsEdit}/>
+                        </TouchableOpacity>
+                    
                         <Entypo name={'vinyl'} style={styles.itemsPriceSymbol}/>
                         <Text style={styles.itemsPrice}>
                             Preço: R$ {produto.valorVenda}

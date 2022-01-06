@@ -6,12 +6,14 @@ import api from '../../../server/api';
 
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+import { Load } from '../../components/Load';
 
 export function AddItems(){
     const[nome, setNome] = useState<String>('');
     const[valueC, setValueC] = useState<String>('');
     const[valueV, setValueV] = useState<String>('');
     const[quantity, setQuantity] = useState<Number>();
+    const[loading, setLoading] = useState(false);
     const navigation = useNavigation();
     
     async function handleAddItems(){
@@ -26,9 +28,9 @@ export function AddItems(){
             valorVenda,
             quantidade,
         };
-        
+        setLoading(true);
         await api.post('produtos', data);
-
+        setLoading(false);
         Alert.alert('Item registrado!')
         navigation.goBack();
     }
@@ -46,6 +48,10 @@ export function AddItems(){
         const qnt = Number(itemQuant);
         setQuantity(qnt)
     }
+
+    if(loading)
+        return <Load/>
+    
     return(
         <SafeAreaView style={styles.container}>
             <Header title={'Criar um Item'}/>

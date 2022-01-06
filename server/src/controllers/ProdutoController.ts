@@ -1,4 +1,5 @@
 import {Response,Request} from 'express';
+import knex from 'knex';
 import Knex from '../database/connection';
 
 class ProdutoController{
@@ -56,6 +57,17 @@ class ProdutoController{
         
         await Knex('produtos').update(produto).where('id', id);
         return response.json({sucess:true})
+    }
+
+    async editable(request:Request, response:Response){
+        const {id} = request.params
+
+        const produto = await knex('produtos')
+            .select('produtos.*')
+            .where('produtos.id', id)
+            .first();
+
+        return response.json(produto)
     }
 };
 
