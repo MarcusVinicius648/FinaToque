@@ -8,5 +8,9 @@ const produtoController = new ProdutoController();
 
 routes.post('/produtos', produtoController.create);
 routes.get('/produtos', produtoController.show);
+routes.get('/produtos/:id', produtoController.editable);
 routes.put('/produtos/:id', produtoController.change);
+routes.put('/produtos/:id', produtoController.update);
+routes.delete('/produtos/:id', produtoController.delete);
+
 export default routes

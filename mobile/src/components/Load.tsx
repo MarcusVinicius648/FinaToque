@@ -1,10 +1,10 @@
 import React from 'react';
-import{StyleSheet, View} from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import loadAnimation from '../assets/load.json';
 
 import LottieView from 'lottie-react-native';
 
-export function Load(){
+export function Load() {
     return (
         <View style={styles.container}>
             <LottieView
@@ -18,14 +18,14 @@ export function Load(){
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    animation:{
-        backgroundColor:'transparent',
-        width:200,
-        height:200
+    animation: {
+        backgroundColor: 'transparent',
+        width: 300,
+        height: 300
     },
 });
