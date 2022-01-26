@@ -12,7 +12,15 @@ interface Params {
     produto_id: number
 }
 
+interface Produtos {
+    nome:string;
+    valorCompra:string;
+    valorVenda:string;
+    quantidade:string;
+}
+
 export function AddItems() {
+    const [produtos, setProdutos] = useState<Produtos>({} as Produtos)
     const [nome, setNome] = useState<String>('');
     const [valueC, setValueC] = useState<String>('');
     const [valueV, setValueV] = useState<String>('');
@@ -26,10 +34,11 @@ export function AddItems() {
     useEffect(() => {
         if (routeParams.produto_id > 0) {
             api.get(`produtos/${routeParams.produto_id}`).then((response) => {
-                setNome(response.data.nome);
-                setValueC(response.data.valorCompra)
-                setValueV(response.data.valorVenda)
-                setQuantity(response.data.quantidade)
+                setProdutos(response.data);
+                setNome(produtos.nome);
+                setValueC(produtos.valorCompra)
+                setValueV(produtos.valorVenda)
+                setQuantity(produtos.quantidade)
             })
         }
     }, [])
@@ -37,7 +46,7 @@ export function AddItems() {
     async function handleAddItems() {
         const valorCompra = Number(valueC);
         const valorVenda = Number(valueV);
-        const quantidade = quantity;
+        const quantidade = Number(quantity);
         const data = {
             nome,
             valorCompra,
@@ -68,8 +77,7 @@ export function AddItems() {
         setValueV(itemValueV)
     }
     function handleSetQnt(itemQuant: string) {
-        const qnt = Number(itemQuant);
-        setQuantity(qnt)
+        setQuantity(itemQuant)
     }
 
     if (loading)
