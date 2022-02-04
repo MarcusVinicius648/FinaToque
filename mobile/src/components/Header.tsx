@@ -6,16 +6,19 @@ import fonts from '../styles/fonts';
 
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
+import {useControl} from '../hooks/useControl';
 
 interface HeaderProps extends TouchableOpacityProps{
     title: string
 }
 
 export function Header({title, ...rest}:HeaderProps){
-    
-    //Back to home´s page
+
     const navigation = useNavigation();
-    function handleBackHome(){
+    const {values, calcValuesStock} = useControl();
+
+    async function handleBackHome(){
+        await calcValuesStock();
         navigation.goBack();
     }
     

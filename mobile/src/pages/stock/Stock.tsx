@@ -20,6 +20,8 @@ export function Stock() {
     const navigation = useNavigation();
     const [produto, setProduto] = useState<Produto[]>([])
     const [reload, setReload] = useState(true);
+    const [valorBruto, setValorBruto ] = useState(0);
+    const [precoVenda, setPrecoVenda] = useState(0);
 
     useEffect(() => {
         navigation.addListener('focus', () => {
@@ -29,6 +31,7 @@ export function Stock() {
         api.get('produtos').then(response => {
             setProduto(response.data)
         })
+
     }, [reload, navigation]);
 
     async function handleAddQuanty(id: number, nome: string, valorVenda: number, valorCompra: number, quantidade: number) {
