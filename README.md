@@ -1,4 +1,4 @@
-# FinaToque 📖
+# 📖FinaToque 
 
  - Definição:
  FinaToque é um projeto do ensino médio, do qual é destinado a ajudar micro empreendedores a organizar suas contas. Nosso foco são em Micro-Empreendendores individuais e trabalhadores informais.
