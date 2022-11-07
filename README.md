@@ -19,7 +19,7 @@
 FinaToque is a high-school project , that will help little business to organize your finances. 
 Our focus are Individuals Micro-Entrepreneur and informal workers!  
  
- - Technology:
+ - Technologys:
 React Native, Node.JS and Sqlite.
 
  - Run the develop server:
