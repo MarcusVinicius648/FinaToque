@@ -26,10 +26,10 @@
 ⚙️ Rodar o servidor de desenvolvimento:
      - Primeiro Passo:
       Utilizando do terminal, coloque o comando: `npm install`, para baixar todos os pacotes utilizados para o desenvolvimento do código.
-      
+      '
      - Segundo Passo:
       No terminal, coloque: `cd server`, e pressione `Enter`. Logo após, utilize o comando: `npm run dev`.
-      
+      '
      - Terceiro Passo:
       Abra outro terminal e escreva: `expo start`. Assim irá abrir uma página na internet com um Qrcode. Use seu telefone para escanear o QrCode com o aplicativo do Expo. Todas as mudanças no código serão atualizadas automaticamente na tela do celular.
 
